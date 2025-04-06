@@ -4,9 +4,9 @@ import Banner from "./Banner";
 const Home = () => {
   return (
     <div>
-      {/* <section>
+      <section>
         <Banner></Banner>
-      </section> */}
+      </section>
     </div>
   );
 };
