@@ -5,17 +5,17 @@ import Footer from "../Shared/Footer";
 
 const Mainlayout = () => {
   return (
-    <>
-      <header className="w-full bg-secondary bg-opacity-60 py-6">
+    <div className="flex flex-col min-h-screen">
+      <header className="w-full bg-secondary  py-6">
         <Navbar></Navbar>
       </header>
-      <section>
+      <section className="flex-grow">
         <Outlet></Outlet>
       </section>
-      <footer>
+      <footergit>
         <Footer></Footer>
-      </footer>
-    </>
+      </footergit>
+    </div>
   );
 };
 
