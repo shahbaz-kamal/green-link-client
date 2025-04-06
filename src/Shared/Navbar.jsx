@@ -2,6 +2,8 @@ import React from "react";
 import logo from "../../public/logoCircle.png";
 import { navMenue } from "./navlinks";
 import { NavLink } from "react-router-dom";
+import { CiBellOn } from "react-icons/ci";
+import { FaBell } from "react-icons/fa";
 
 const Navbar = () => {
   const links = (
@@ -49,6 +51,15 @@ const Navbar = () => {
           </div>
 
           {/* notification bell icon symbol button section */}
+          <div className="text-primary  hover:cursor-pointer relative">
+            {/*  when notification have hover:animate-bounce */}
+            <div>
+              <FaBell size={25} />
+            </div>
+            <p className="absolute -top-2 right-0 font-bold text-primary   rounded-full text-base">
+              1
+            </p>
+          </div>
           {/* login button section */}
 
           {/* mobile hamburger menue section */}
