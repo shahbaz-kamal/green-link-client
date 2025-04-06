@@ -3,7 +3,7 @@ import banner from "../../assets/banner_2.jpg";
 const Banner = () => {
   return (
     <div
-      className="hero min-h-[65vh] mt-[88px]"
+      className="hero min-h-[65vh] "
       style={{
         backgroundImage: `url(${banner})`,
       }}
@@ -19,10 +19,13 @@ const Banner = () => {
             Volunteer with us, support eco-projects, and make an impact. Together, we can protect our planet—one action at a time.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-primary text-white px-6 py-2 rounded-md hover:bg-secondary  font-semibold hover:text-primary transition ease-in-out duration-300">
+            <button className="bg-primary text-white px-6 py-2 rounded-md hover:bg-opacity-85  font-semibold  transition ease-in-out duration-300">
               Become a Volunteer
             </button>
-            <button className="border border-accent text-accent px-6 py-2 rounded-md hover:bg-white hover:text-primary transition font-semibold hover:border-white ease-in-out duration-300">
+             {/* <button className="bg-primary text-white px-6 py-2 rounded-md hover:bg-green-700 transition font-semibold">
+              Become a Volunteer
+            </button> */}
+            <button className="border border-white text-white px-6 py-2 rounded-md hover:bg-white hover:text-primary transition font-semibold hover:border-white ease-in-out duration-300">
               Donate Now
             </button>
           </div>
