@@ -52,8 +52,10 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       if (currentUser) {
+        console.log(" current user ===>",currentUser)
         setLoading(false);
       } else {
+        console.log(" current user ===>",currentUser)
         setLoading(false);
       }
     });
@@ -68,6 +70,10 @@ const AuthProvider = ({ children }) => {
     googleLoginUser,
     updateProfile,
     logOutUser,
+    loading,
+    setLoading,
+    user,
+    setUser,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
