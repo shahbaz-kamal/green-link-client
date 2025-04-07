@@ -36,7 +36,7 @@ export const navVolunteer = [
   {
     id: 1,
     title: "Dashboard",
-    path: "/dashboard",
+    path: "/dashboard/available-events",
     role: "volunteer",
   },
   {
@@ -56,7 +56,7 @@ export const navAdmin = [
   {
     id: 1,
     title: "Dashboard",
-    path: "/dashboard",
+    path: "/dashboard/overview",
     role: "admin",
   },
   {
@@ -76,7 +76,7 @@ export const navDonor = [
   {
     id: 1,
     title: "Dashboard",
-    path: "/dashboard",
+    path: "/dashboard/donate-now",
     role: "donor",
   },
   {

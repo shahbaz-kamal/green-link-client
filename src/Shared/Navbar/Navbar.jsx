@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "../../assets/logoCircle.png";
-import { navMenue } from "./navlinks";
+import { navAdmin, navDonor, navMenue, navVolunteer } from "./navlinks";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import { FaBell } from "react-icons/fa";
@@ -47,6 +47,78 @@ const Navbar = () => {
     </>
   );
 
+  let linksPrivate;
+
+  if (role === "donor") {
+    <>
+      {
+        (linksPrivate = navDonor.map((link) => {
+          return (
+            <NavLink
+              key={link.id}
+              to={link.path}
+              className={({ isActive }) =>
+                `transition ease-in-out duration-300 font-semibold text-xl ${
+                  isActive ? "text-primary underline" : "text-text"
+                }`
+              }
+            >
+              <li className=" hover:text-primary hover:underline ">
+                <span className="px-2"> {link.title}</span>
+              </li>
+            </NavLink>
+          );
+        }))
+      }
+    </>;
+  }
+  if (role === "volunteer") {
+    <>
+      {
+        (linksPrivate = navVolunteer.map((link) => {
+          return (
+            <NavLink
+              key={link.id}
+              to={link.path}
+              className={({ isActive }) =>
+                `transition ease-in-out duration-300 font-semibold text-xl ${
+                  isActive ? "text-primary underline" : "text-text"
+                }`
+              }
+            >
+              <li className=" hover:text-primary hover:underline ">
+                <span className="px-2"> {link.title}</span>
+              </li>
+            </NavLink>
+          );
+        }))
+      }
+    </>;
+  }
+  if (role === "admin") {
+    <>
+      {
+        (linksPrivate = navAdmin.map((link) => {
+          return (
+            <NavLink
+              key={link.id}
+              to={link.path}
+              className={({ isActive }) =>
+                `transition ease-in-out duration-300 font-semibold text-xl ${
+                  isActive ? "text-primary underline" : "text-text"
+                }`
+              }
+            >
+              <li className=" hover:text-primary hover:underline ">
+                <span className="px-2"> {link.title}</span>
+              </li>
+            </NavLink>
+          );
+        }))
+      }
+    </>;
+  }
+
   const handleLogOut = async () => {
     logOutUser()
       .then(() => {
@@ -78,7 +150,7 @@ const Navbar = () => {
             <div className="w-10 h-10">
               <img src={logo} alt="" />
             </div>
-            <div className="font-extrabold text-xl md:text-3xl">
+            <div className="font-extrabold text-xl md:text-3xl hidden md:block">
               <p className="text-primary font-cinzel">
                 Green <span className="text-text">Link</span>
               </p>
@@ -86,7 +158,7 @@ const Navbar = () => {
           </div>
 
           {/* navbar center: menue section */}
-          <div className="hidden 2xl:block">
+          <div className="hidden xl:block">
             <ul className="flex gap-4 ">{linksPublic}</ul>
           </div>
 
@@ -122,11 +194,22 @@ const Navbar = () => {
             {/* image sectiopn */}
             <div className="w-10 h-10 rounded-full border border-primary ">
               {user && user?.email ? (
-                <img
-                  className="rounded-full w-full h-full object-cover"
-                  src={userData?.photo}
-                  alt=""
-                />
+                <div
+                  onClick={() => {
+                    if (!user && user?.email) {
+                      setPrivateMenuOpen(false);
+                      return;
+                    }
+                    setPrivateMenuOpen(!privateMenuOpen);
+                    setHamburgerMenuOpen(false);
+                  }}
+                >
+                  <img referrerPolicy="no-referrer"
+                    className="rounded-full w-full h-full object-cover cursor-pointer"
+                    src={userData?.photo}
+                    alt=""
+                  />
+                </div>
               ) : (
                 <div className="p-1">
                   <img
@@ -140,9 +223,10 @@ const Navbar = () => {
 
             {/* mobile hamburger menue section */}
             <div
-              className="text-primary"
+              className="text-primary block xl:hidden"
               onClick={() => {
                 setHamburgerMenuOpen(!hamburgerMenuOpen);
+                setPrivateMenuOpen(false);
               }}
             >
               <GiHamburgerMenu className="text-4xl" />
@@ -156,6 +240,8 @@ const Navbar = () => {
       <ResponsiveMenu
         hamburgerMenuOpen={hamburgerMenuOpen}
         linksPublic={linksPublic}
+        linksPrivate={linksPrivate}
+        privateMenuOpen={privateMenuOpen}
       ></ResponsiveMenu>
     </>
   );
