@@ -1,6 +1,9 @@
 import React from "react";
 import banner from "../../assets/banner_2.jpg";
+import useAuth from "../../Hooks/useAuth";
 const Banner = () => {
+  const name=useAuth()
+  console.log(name)
   return (
     <div
       className="hero min-h-[65vh] "
