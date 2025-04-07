@@ -28,7 +28,7 @@ const Navbar = () => {
       {navMenue.map((link) => {
         if (link.role === "public") {
           return (
-            <NavLink
+            <NavLink onClick={()=>{setHamburgerMenuOpen(false)}}
               key={link.id}
               to={link.path}
               className={({ isActive }) =>
@@ -54,7 +54,7 @@ const Navbar = () => {
       {
         (linksPrivate = navDonor.map((link) => {
           return (
-            <NavLink
+            <NavLink  onClick={()=>{setPrivateMenuOpen(false)}}
               key={link.id}
               to={link.path}
               className={({ isActive }) =>
@@ -77,7 +77,7 @@ const Navbar = () => {
       {
         (linksPrivate = navVolunteer.map((link) => {
           return (
-            <NavLink
+            <NavLink onClick={()=>{setPrivateMenuOpen(false)}}
               key={link.id}
               to={link.path}
               className={({ isActive }) =>

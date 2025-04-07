@@ -46,9 +46,9 @@ export const navVolunteer = [
     role: "volunteer",
   },
   {
-    id: 1,
+    id: 3,
     title: "Volunteer Portal",
-    path: "volunteer-portal",
+    path: "/volunteer-portal",
     role: "volunteer",
   },
 ];
