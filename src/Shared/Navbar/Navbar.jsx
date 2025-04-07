@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import logo from "../../public/logoCircle.png";
+import logo from "../../assets/logoCircle.png";
 import { navMenue } from "./navlinks";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { CiBellOn } from "react-icons/ci";
 import { FaBell } from "react-icons/fa";
-import userIcon from "../assets/user_Icon.png";
+import userIcon from "../../assets/user_Icon.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import ResponsiveMenu from "./ResponsiveMenu";
 
@@ -70,9 +70,13 @@ const Navbar = () => {
               </p>
             </div>
             {/* button section */}
-            <button className="rounded-md border border-primary px-6 py-1 text-xl hover:bg-primary hover:text-white duration-300 ease-in-out transition font-semibold">
-              Login
-            </button>
+            <Link to={'/login'}>
+              {" "}
+              <button className="rounded-md border border-primary px-6 py-1 text-xl hover:bg-primary hover:text-white duration-300 ease-in-out transition font-semibold">
+                Login
+              </button>
+            </Link>
+
             {/* image sectiopn */}
             <div className="w-10 h-10 rounded-full border border-primary p-1">
               <img src={userIcon} alt="" />
@@ -93,7 +97,10 @@ const Navbar = () => {
         </div>
       </nav>
       {/* mobile sidebar section */}
-      <ResponsiveMenu hamburgerMenuOpen={hamburgerMenuOpen} linksPublic={linksPublic}></ResponsiveMenu>
+      <ResponsiveMenu
+        hamburgerMenuOpen={hamburgerMenuOpen}
+        linksPublic={linksPublic}
+      ></ResponsiveMenu>
     </>
   );
 };

@@ -10,9 +10,9 @@ const ResponsiveMenu = ({ linksPublic, hamburgerMenuOpen }) => {
             initial={{ opacity: 0, y: -100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
-            className="absolute top-20 left-0  h-screen z-50 "
+            className="absolute top-20 left-0  h-screen z-50 w-full"
           >
-            <div className="text-xl font-semibold uppercase bg-secondary bg-opacity-75 py-10 m-6 rounded-3xl">
+            <div className="text-xl font-semibold uppercase bg-secondary  py-10 m-6 rounded-3xl">
               <ul className="flex flex-col justify-center items-center gap-10">
                 {linksPublic}
               </ul>
