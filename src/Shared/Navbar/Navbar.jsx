@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "../../assets/logoCircle.png";
 import { navMenue } from "./navlinks";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 import { FaBell } from "react-icons/fa";
 import userIcon from "../../assets/user_Icon.png";
@@ -9,11 +9,20 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import ResponsiveMenu from "./ResponsiveMenu";
 import useSingleUserData from "../../Hooks/useSingleUserData";
 import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
+import { div } from "framer-motion/client";
 
 const Navbar = () => {
+  // declaring states
   const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState(false);
   const [privateMenuOpen, setPrivateMenuOpen] = useState(false);
-  console.log(hamburgerMenuOpen);
+
+  // getting value
+  const { user, loading, logOutUser, setLoading } = useAuth();
+  const navigate = useNavigate();
+  const { userData, role } = useSingleUserData();
+
+  // links
   const linksPublic = (
     <>
       {navMenue.map((link) => {
@@ -37,8 +46,27 @@ const Navbar = () => {
       })}
     </>
   );
-  const { user, loading } = useAuth();
-  const { userData, role } = useSingleUserData();
+
+  const handleLogOut = async () => {
+    logOutUser()
+      .then(() => {
+        Swal.fire({
+          title: "Log Out Successful",
+          icon: "success",
+          draggable: true,
+        });
+        setLoading(false);
+        navigate("/");
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          text: `${error.message}`,
+        });
+        setLoading(false);
+      });
+  };
+
   console.log(userData, role);
 
   return (
@@ -75,11 +103,21 @@ const Navbar = () => {
               </p>
             </div>
             {/* button section */}
-            <Link to={"/login"}>
-              <button className="rounded-md border border-primary px-6 py-1 text-xl hover:bg-primary hover:text-white duration-300 ease-in-out transition font-semibold">
-                Login
+
+            {user && user?.email ? (
+              <button
+                onClick={handleLogOut}
+                className="rounded-md border border-primary px-6 py-1 text-xl hover:bg-primary hover:text-white duration-300 ease-in-out transition font-semibold"
+              >
+                Log Out
               </button>
-            </Link>
+            ) : (
+              <Link to={"/login"}>
+                <button className="rounded-md border border-primary px-6 py-1 text-xl hover:bg-primary hover:text-white duration-300 ease-in-out transition font-semibold">
+                  Login
+                </button>
+              </Link>
+            )}
 
             {/* image sectiopn */}
             <div className="w-10 h-10 rounded-full border border-primary ">
@@ -90,11 +128,13 @@ const Navbar = () => {
                   alt=""
                 />
               ) : (
-                <img
-                  className="rounded-full w-full h-full object-cover"
-                  src={userIcon}
-                  alt=""
-                />
+                <div className="p-1">
+                  <img
+                    className="rounded-full w-full h-full object-cover "
+                    src={userIcon}
+                    alt=""
+                  />
+                </div>
               )}
             </div>
 
