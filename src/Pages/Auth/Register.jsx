@@ -76,10 +76,6 @@ const Register = () => {
             }
             if (res.data.message === "This user already exist") {
               setLoading(false);
-              Swal.fire({
-                icon: "error",
-                text: "You already have an account, please login",
-              });
             }
           })
           .catch((err) => {

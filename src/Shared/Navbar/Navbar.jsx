@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import logo from "../../assets/logoCircle.png";
 import { navMenue } from "./navlinks";
 import { Link, NavLink } from "react-router-dom";
-import { CiBellOn } from "react-icons/ci";
+
 import { FaBell } from "react-icons/fa";
 import userIcon from "../../assets/user_Icon.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import ResponsiveMenu from "./ResponsiveMenu";
+import useSingleUserData from "../../Hooks/useSingleUserData";
+import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
   const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState(false);
@@ -35,6 +37,9 @@ const Navbar = () => {
       })}
     </>
   );
+  const { user, loading } = useAuth();
+  const { userData, role } = useSingleUserData();
+  console.log(userData, role);
 
   return (
     <>
@@ -70,16 +75,27 @@ const Navbar = () => {
               </p>
             </div>
             {/* button section */}
-            <Link to={'/login'}>
-              {" "}
+            <Link to={"/login"}>
               <button className="rounded-md border border-primary px-6 py-1 text-xl hover:bg-primary hover:text-white duration-300 ease-in-out transition font-semibold">
                 Login
               </button>
             </Link>
 
             {/* image sectiopn */}
-            <div className="w-10 h-10 rounded-full border border-primary p-1">
-              <img src={userIcon} alt="" />
+            <div className="w-10 h-10 rounded-full border border-primary ">
+              {user && user?.email ? (
+                <img
+                  className="rounded-full w-full h-full object-cover"
+                  src={userData?.photo}
+                  alt=""
+                />
+              ) : (
+                <img
+                  className="rounded-full w-full h-full object-cover"
+                  src={userIcon}
+                  alt=""
+                />
+              )}
             </div>
 
             {/* mobile hamburger menue section */}
