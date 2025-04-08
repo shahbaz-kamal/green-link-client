@@ -3,7 +3,7 @@ import React from 'react';
 const Donations = () => {
     return (
         <div>
-            I am donations
+         <SectionTitle heading={"Donation"}></SectionTitle>
         </div>
     );
 };

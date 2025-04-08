@@ -68,7 +68,7 @@ export const navAdmin = [
   {
     id: 2,
     title: "Admin Panel",
-    path: "/admin-panel",
+    path: "/dashboard/manage-users",
     role: "admin",
   },
 ];

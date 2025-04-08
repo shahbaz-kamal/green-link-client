@@ -28,7 +28,10 @@ const Navbar = () => {
       {navMenue.map((link) => {
         if (link.role === "public") {
           return (
-            <NavLink onClick={()=>{setHamburgerMenuOpen(false)}}
+            <NavLink
+              onClick={() => {
+                setHamburgerMenuOpen(false);
+              }}
               key={link.id}
               to={link.path}
               className={({ isActive }) =>
@@ -54,7 +57,10 @@ const Navbar = () => {
       {
         (linksPrivate = navDonor.map((link) => {
           return (
-            <NavLink  onClick={()=>{setPrivateMenuOpen(false)}}
+            <NavLink
+              onClick={() => {
+                setPrivateMenuOpen(false);
+              }}
               key={link.id}
               to={link.path}
               className={({ isActive }) =>
@@ -77,7 +83,10 @@ const Navbar = () => {
       {
         (linksPrivate = navVolunteer.map((link) => {
           return (
-            <NavLink onClick={()=>{setPrivateMenuOpen(false)}}
+            <NavLink
+              onClick={() => {
+                setPrivateMenuOpen(false);
+              }}
               key={link.id}
               to={link.path}
               className={({ isActive }) =>
@@ -101,6 +110,9 @@ const Navbar = () => {
         (linksPrivate = navAdmin.map((link) => {
           return (
             <NavLink
+              onClick={() => {
+                setPrivateMenuOpen(false);
+              }}
               key={link.id}
               to={link.path}
               className={({ isActive }) =>
@@ -195,6 +207,7 @@ const Navbar = () => {
             <div className="w-10 h-10 rounded-full border border-primary ">
               {user && user?.email ? (
                 <div
+                  className="w-full h-full "
                   onClick={() => {
                     if (!user && user?.email) {
                       setPrivateMenuOpen(false);
@@ -204,7 +217,8 @@ const Navbar = () => {
                     setHamburgerMenuOpen(false);
                   }}
                 >
-                  <img referrerPolicy="no-referrer"
+                  <img
+                    referrerPolicy="no-referrer"
                     className="rounded-full w-full h-full object-cover cursor-pointer"
                     src={userData?.photo}
                     alt=""

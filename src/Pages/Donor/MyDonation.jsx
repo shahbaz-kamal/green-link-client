@@ -1,12 +1,12 @@
 import React from "react";
 import SectionTitle from "../../Shared/SectionTitle";
 
-const Overview = () => {
+const MyDonation = () => {
   return (
     <div>
-      <SectionTitle heading={"Admin overview"}></SectionTitle>
+      <SectionTitle heading={"My Donation"}></SectionTitle>
     </div>
   );
 };
 
-export default Overview;
+export default MyDonation;

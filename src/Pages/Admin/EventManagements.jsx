@@ -1,11 +1,12 @@
-import React from 'react';
+import React from "react";
+import SectionTitle from "../../Shared/SectionTitle";
 
 const EventManagements = () => {
-    return (
-        <div>
-            I am event managements
-        </div>
-    );
+  return (
+    <div>
+      <SectionTitle heading={"Events Managements"}></SectionTitle>
+    </div>
+  );
 };
 
 export default EventManagements;
