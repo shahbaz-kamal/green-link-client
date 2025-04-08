@@ -3,8 +3,35 @@ import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import SectionTitle from "../../Shared/SectionTitle";
 import SocialLogin from "./SocialLogin";
+import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const { loginUser } = useAuth();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    loginUser(email, password)
+      .then((result) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Login Success",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+
+          text: `${error.message}`,
+        });
+      });
+  };
   return (
     <div className="flex flex-col items-center justify-center px-4">
       <header>
@@ -19,17 +46,14 @@ const Login = () => {
           Welcome Back
         </h2> */}
 
-        <form>
+        <form onSubmit={handleLogin}>
           <div className="mb-4">
-            <label
-              htmlFor="email"
-              className="block text-sm font-semibold mb-1 text-gray-700"
-            >
+            <label className="block text-sm font-semibold mb-1 text-gray-700">
               Email Address
             </label>
             <input
               type="email"
-              id="email"
+              name="email"
               placeholder="Enter your email"
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal"
               required
@@ -37,15 +61,12 @@ const Login = () => {
           </div>
 
           <div className="mb-6">
-            <label
-              htmlFor="password"
-              className="block text-sm font-semibold mb-1 text-gray-700"
-            >
+            <label className="block text-sm font-semibold mb-1 text-gray-700">
               Password
             </label>
             <input
               type="password"
-              id="password"
+              name="password"
               placeholder="Enter your password"
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal"
               required
@@ -69,7 +90,7 @@ const Login = () => {
         <SocialLogin></SocialLogin>
 
         <p className="text-center text-sm mt-6 text-gray-600">
-        <span className="mr-1">  Don’t have an account?</span>
+          <span className="mr-1"> Don’t have an account?</span>
           <Link
             to="/register"
             className="text-teal font-semibold hover:underline"
