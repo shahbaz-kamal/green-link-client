@@ -22,7 +22,7 @@ const Banner = () => {
             Volunteer with us, support eco-projects, and make an impact. Together, we can protect our planet—one action at a time.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-teal text-white px-6 py-2 rounded-md hover:bg-opacity-85  font-semibold  transition ease-in-out duration-300">
+            <button className=" bg-primary hover:bg-teal text-white font-medium py-2  px-4 rounded-lg transition duration-300">
               Become a Volunteer
             </button>
              {/* <button className="bg-primary text-white px-6 py-2 rounded-md hover:bg-green-700 transition font-semibold">

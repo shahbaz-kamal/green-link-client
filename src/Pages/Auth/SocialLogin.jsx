@@ -52,7 +52,7 @@ const SocialLogin = () => {
   return (
     <button
       onClick={handleGoogleLogin}
-      className="w-full border border-gray-300 py-2 rounded-lg flex items-center justify-center gap-3 hover:bg-gray-50 transition"
+      className="w-full border border-gray-300 py-2 rounded-lg flex items-center justify-center gap-3 hover:bg-gray-50 transition ease-in-out duration-300"
     >
       <FcGoogle className="text-2xl" />
       <span className="font-medium">Continue with Google</span>
