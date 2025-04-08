@@ -31,6 +31,7 @@ const Navbar = () => {
             <NavLink
               onClick={() => {
                 setHamburgerMenuOpen(false);
+                setPrivateMenuOpen(false);
               }}
               key={link.id}
               to={link.path}
@@ -155,7 +156,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="w-11/12 2xl:w-10/12 mx-auto ">
+      <nav className="w-11/12 md:w-10/12 mx-auto ">
         <div className="flex items-center justify-between">
           {/* logo section (navbar start) */}
           <div className="flex items-center gap-2">

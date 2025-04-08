@@ -9,9 +9,12 @@ const Profile = () => {
   const { name, email, role, photo, createdAt } = userData || {};
 
   return (
-    <div className="min-h-screen bg-background p-4 md:p-10">
+    <div className=" bg-background w-11/12 md:w-10/12 mx-auto ">
       <header className="mb-8">
-        <SectionTitle heading="My Profile" subHeading="View your account details" />
+        <SectionTitle
+          heading="My Profile"
+          subHeading="View your account details"
+        />
       </header>
 
       <div className="max-w-3xl mx-auto bg-white shadow-lg rounded-2xl p-6 border border-teal">
@@ -29,10 +32,21 @@ const Profile = () => {
           </div>
 
           <div className="flex-1 space-y-3">
-            <h2 className="text-2xl font-semibold text-primary">{name || "User Name"}</h2>
-            <p className="text-text"><strong>Email:</strong> {email}</p>
-            <p className="text-text"><strong>Role:</strong> <span className="capitalize">{role}</span></p>
-            <p className="text-text"><strong>Joined:</strong>   {createdAt && !isNaN(new Date(createdAt)) ? format(new Date(createdAt), "Pp") : "N/A"}</p>
+            <h2 className="text-2xl font-semibold text-primary">
+              {name || "User Name"}
+            </h2>
+            <p className="text-text">
+              <strong>Email:</strong> {email}
+            </p>
+            <p className="text-text">
+              <strong>Role:</strong> <span className="capitalize">{role}</span>
+            </p>
+            <p className="text-text">
+              <strong>Joined:</strong>{" "}
+              {createdAt && !isNaN(new Date(createdAt))
+                ? format(new Date(createdAt), "Pp")
+                : "N/A"}
+            </p>
           </div>
         </div>
       </div>
